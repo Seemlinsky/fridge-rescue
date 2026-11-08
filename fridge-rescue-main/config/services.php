@@ -28,6 +28,13 @@ return [
         'region' => env('AWS_DEFAULT_REGION', 'us-east-1'),
     ],
 
+    'recommender' => [
+        // "knn" = TF-IDF + NearestNeighbors (Python), "coverage" = baseline zonder ML
+        'strategy' => env('RECOMMENDER_STRATEGY', 'knn'),
+        // Op Windows heet Python meestal "python", op macOS/Linux "python3"
+        'python' => env('PYTHON_PATH', PHP_OS_FAMILY === 'Windows' ? 'python' : 'python3'),
+    ],
+
     'slack' => [
         'notifications' => [
             'bot_user_oauth_token' => env('SLACK_BOT_USER_OAUTH_TOKEN'),
